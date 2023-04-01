@@ -1,0 +1,27 @@
+{
+    "deals": [
+    {
+        "name": "tomato",
+        "currentPricePerPound": 0.98,
+        "regularPricePerPound" : 1.28,
+        "percentageDiscount": 0.23,
+        "currency" : "USD"
+    },
+    {
+        "name": "sweet potatoes",
+        "currentPricePerPound": 1.30,
+        "regularPricePerPound": 1.57,
+        "percentageDiscount": 0.17,
+        "currency" : "USD"
+
+    },
+    {
+        "name": "chicken breast",
+        "currentPricePerPound": 3.25,
+        "regularPricePerPound": 5.65,
+        "percentageDiscount": 0.42,
+        "currency" : "USD"  
+    }
+    ]
+}
+
