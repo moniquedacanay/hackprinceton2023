@@ -1,8 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import styles from "./SearchBar.module.css";
+import { useRouter } from "next/router";
 
 const SearchBar = () => {
+  const router = useRouter();
   const [city, setCity] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
@@ -29,7 +31,7 @@ const SearchBar = () => {
           method: "GET",
           headers: {
             "X-RapidAPI-Key":
-              "52b9122709mshf91c4ac0c85c6d2p198a1ejsn74b9b5afc65f",
+              `${process.env.X_RapidAPI_Key}`,
             "X-RapidAPI-Host": "autocomplete-usa.p.rapidapi.com",
           },
         };
@@ -84,6 +86,7 @@ const SearchBar = () => {
     console.log(
       `Searching for listings with city ${city} and max price ${maxPrice}`
     );
+    router.push("/result");
   };
 
   return (
