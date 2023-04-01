@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Habibi&family=Inter&family=Istok+Web&family=Lato&display=swap");
+
+.grid {
+  display: grid;
+  width: 80%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: auto;
+}
+
+.item {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  width: 280px;
+  height: 320px;
+  background-color: black;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.title {
+  position: absolute;
+  bottom: 5px;
+  width: 250px;
+  max-height: 45px;
+  padding: 5px;
+  overflow: hidden;
+  background: #9aeeda;
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  text-overflow: ellipsis; 
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
