@@ -2,8 +2,8 @@
 .container{
     background-image: url('/background.png');
     background-size: 100%;
-    height: 846px;
-    /* background-size: cover; */
+    height: 100vh;
+    background-size: cover;
     background-repeat: no-repeat;
     padding-top: 200px;
 
