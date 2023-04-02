@@ -2,10 +2,13 @@ import Navbar from '@/components/Navbar';
 import styles from '@/styles/Result.module.css';
 import { useState, useEffect } from 'react';
 import GridImage from '@/components/GridImage';
+import Cookies from "js-cookie";
 
 export default function Result(){
     const [recipes, setRecipes] = useState([]);
     const fetchData = async () => {
+        const query = Cookies.get('topic')? Cookies.get('topic'):"";
+        console.log(query);
         const options = {
             method: "GET",
             headers: {
@@ -14,7 +17,7 @@ export default function Result(){
             },
           };
           const response = await fetch(
-            "https://edamam-recipe-search.p.rapidapi.com/search?q=salmon%20and%20asparagus",
+            `https://edamam-recipe-search.p.rapidapi.com/search?q=${query}`,
             options
           );
           const result = await response.json();
