@@ -36,7 +36,7 @@ const SearchBar = () => {
         const options = {
           method: "GET",
           headers: {
-            "X-RapidAPI-Key": `${process.env.X_RapidAPI_Key}`,
+            "X-RapidAPI-Key": process.env.X_RAPIDAPI_KEY,
             "X-RapidAPI-Host": "autocomplete-usa.p.rapidapi.com",
           },
         };

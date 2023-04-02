@@ -11,21 +11,21 @@ export default function Recipe() {
   const [showModal, setShowModal] = useState(false);
 
   const fetchData = async () => {
-    const query = Cookies.get("topic") ? Cookies.get("topic") : "";
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": `${process.env.X_RapidAPI_Key2}`,
-        "X-RapidAPI-Host": "edamam-recipe-search.p.rapidapi.com",
-      },
-    };
-    const response = await fetch(
-      `https://edamam-recipe-search.p.rapidapi.com/search?q=${query}`,
-      options
-    );
-    const result = await response.json();
     // console.log(result.hits);
     if (router.query.id) {
+      const query = Cookies.get("topic") ? Cookies.get("topic") : "";
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": process.env.X_RAPIDAPI_KEY,
+          "X-RapidAPI-Host": "edamam-recipe-search.p.rapidapi.com",
+        },
+      };
+      const response = await fetch(
+        `https://edamam-recipe-search.p.rapidapi.com/search?q=${query}`,
+        options
+      );
+      const result = await response.json();
       const id = Number(router.query.id);
       console.log(result.hits[id]);
       setRecipe(result.hits[id].recipe);
@@ -61,11 +61,16 @@ export default function Recipe() {
       },
       body: JSON.stringify({
         phoneNumber: phoneNumber,
-        message: `Here is your recipe! please check it\nRecipe: ${recipe.label}\nCalories: ${String(Number(recipe.calories).toFixed(2))}kcal\nYour total calories today is ${String(Number(recipe.calories).toFixed(2))}kcal!\nGood Job! Invest in your health with every bite!`,
-       
+        message: `Here is your recipe! please check it\nRecipe: ${
+          recipe.label
+        }\nCalories: ${String(
+          Number(recipe.calories).toFixed(2)
+        )}kcal\nYour total calories today is ${String(
+          Number(recipe.calories).toFixed(2)
+        )}kcal!\nGood Job! Invest in your health with every bite!`,
       }),
     });
-    const data=await response.json();
+    const data = await response.json();
     console.log(data);
   };
 
@@ -116,20 +121,27 @@ export default function Recipe() {
               <img src={recipe.image} />
             </div>
           </div>
-          <div style={{ textAlign: "center",marginTop:"20px",display:"flex",justifyContent:"center" }}>
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "20px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <a className={styles.button} href={recipe.url}>
               Click for Instructions
             </a>
             <div style={{ textAlign: "center" }}>
-            <button
-              className={styles.button}
-              onClick={() => setShowModal(true)}
-            >
-              Send it to my phone
-            </button>
+              <button
+                className={styles.button}
+                onClick={() => setShowModal(true)}
+              >
+                Send it to my phone
+              </button>
+            </div>
           </div>
-          </div>
-          
+
           {showModal && (
             <div className={styles.modal}>
               <form onSubmit={handleSendMessage}>
@@ -140,11 +152,10 @@ export default function Recipe() {
                   required
                   onChange={(e) => setPhoneNumber(e.target.value)}
                 />
-                <div style={{textAlign:"center"}}>
-                <button type="submit">Send message</button>
-                <button onClick={() => setShowModal(false)}>Close</button>
+                <div style={{ textAlign: "center" }}>
+                  <button type="submit">Send message</button>
+                  <button onClick={() => setShowModal(false)}>Close</button>
                 </div>
-                
               </form>
             </div>
           )}
