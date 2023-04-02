@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
 import styles from '@/styles/Result.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useLayoutEffect } from 'react';
 import GridImage from '@/components/GridImage';
 import Cookies from "js-cookie";
 
@@ -12,7 +12,7 @@ export default function Result(){
         const options = {
             method: "GET",
             headers: {
-              "X-RapidAPI-Key": `${process.env.X_RapidAPI_Key2}`,
+              "X-RapidAPI-Key": process.env.X_RAPIDAPI_KEY,
               "X-RapidAPI-Host": "edamam-recipe-search.p.rapidapi.com",
             },
           };
@@ -31,7 +31,7 @@ export default function Result(){
     return <div>
      <Navbar/>
      <div className={styles.content}>
-        <GridImage recipes={recipes.slice(0,9)}/>
+       {recipes&&<GridImage recipes={recipes.slice(0,9)}/>}
      </div>
     </div>
 }
