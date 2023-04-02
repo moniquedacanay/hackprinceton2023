@@ -25,7 +25,7 @@
 
 .item:hover {
     border-color: #3c3d3d;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a box-shadow to the border */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Add a box-shadow to the border */
     cursor: pointer;
   }
 

@@ -13,6 +13,7 @@
   align-items: center;
 }
 
+
 .label {
   margin-right: 20px;
   font-family: "Lato";
@@ -26,8 +27,9 @@
 
 .searchInputContainer {
   position: relative;
-  margin-right: 40px;
+  margin-right: 20px;
 }
+
 
 .clearIcon {
   position: absolute;
@@ -40,13 +42,15 @@
 .searchInputContainer input {
   padding: 5px;
   padding-left:10px;
-  width: 200px;
+  width: 180px;
   height: 40px;
   font-size: 16px;
   border:none;
   background: #EAE9F0;
   border-radius: 10px;
 }
+
+
 
 .searchBar input:focus {
   outline: none;

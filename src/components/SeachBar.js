@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import styles from "./SearchBar.module.css";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 const SearchBar = () => {
   const router = useRouter();
@@ -10,6 +11,7 @@ const SearchBar = () => {
   const [suggestions, setSuggestions] = useState([]);
   const wrapperRef = useRef(null);
   const [maxPrice, setMaxPrice] = useState("");
+  const [ingredient,setIngredient]=useState("");
 
   const handleClearCity = () => {
     setCity("");
@@ -21,6 +23,10 @@ const SearchBar = () => {
     setMaxPrice("");
   };
 
+  const handleClearIngredient=()=>{
+    setIngredient("");
+  }
+
   const handleCityChange = async (event) => {
     const value = event.target.value;
     setCity(value);
@@ -30,8 +36,7 @@ const SearchBar = () => {
         const options = {
           method: "GET",
           headers: {
-            "X-RapidAPI-Key":
-              `${process.env.X_RapidAPI_Key}`,
+            "X-RapidAPI-Key": `${process.env.X_RapidAPI_Key}`,
             "X-RapidAPI-Host": "autocomplete-usa.p.rapidapi.com",
           },
         };
@@ -60,6 +65,10 @@ const SearchBar = () => {
     setMaxPrice(event.target.value);
   };
 
+  const handleIngredientChange=(event)=>{
+    setIngredient(event.target.value);
+  }
+
   const handleSuggestionClick = (suggestion) => {
     console.log("click city");
     setCity(suggestion);
@@ -86,6 +95,12 @@ const SearchBar = () => {
     console.log(
       `Searching for listings with city ${city} and max price ${maxPrice}`
     );
+    console.log(ingredient);
+    if(ingredient) {
+    Cookies.set('topic', ingredient);
+    } else{
+        Cookies.set('topic', "salmon and asparagus");
+    }
     router.push("/result");
   };
 
@@ -128,7 +143,22 @@ const SearchBar = () => {
             onChange={handleMaxPriceChange}
           />
           {maxPrice && (
-            <div className={styles.clearIcon} onClick={handleClearMaxPrice}>
+            <div className={styles.clearIcon} onClick={handleClearIngredient}>
+              <FaTimes />
+            </div>
+          )}
+        </div>
+
+        <div className={styles.searchInputContainer}>
+          <label className={styles.label}>Topic</label>
+          <input
+            placeholder="Enter the main Ingredient"
+            value={ingredient}
+            style={{width:"220px"}}
+            onChange={handleIngredientChange}
+          />
+          {ingredient && (
+            <div className={styles.clearIcon} onClick={handleClearIngredient}>
               <FaTimes />
             </div>
           )}
@@ -142,6 +172,8 @@ const SearchBar = () => {
           Search
         </button> */}
       </div>
+      
+      
     </div>
   );
 };

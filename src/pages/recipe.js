@@ -1,12 +1,14 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "@/styles/Recipe.module.css";
+import Cookies from "js-cookie";
 export default function Recipe() {
   const router = useRouter();
   const [recipe, setRecipe] = useState(null);
   const [nutriItems,setNutriItems]=useState([]);
 
   const fetchData = async () => {
+    const query = Cookies.get('topic')? Cookies.get('topic'):"";
     const options = {
       method: "GET",
       headers: {
@@ -15,7 +17,7 @@ export default function Recipe() {
       },
     };
     const response = await fetch(
-      "https://edamam-recipe-search.p.rapidapi.com/search?q=salmon%20and%20asparagus",
+      `https://edamam-recipe-search.p.rapidapi.com/search?q=${query}`,
       options
     );
     const result = await response.json();
@@ -28,7 +30,7 @@ export default function Recipe() {
       const nutri = [];
       const nutritions=result.hits[id].recipe;
       Object.keys(nutritions.totalNutrients).map((item, index) => {
-        if(nutritions.totalNutrients[item].quantity>0&&nutri.length<10) {
+        if(nutritions.totalNutrients[item].quantity>0&&nutri.length<15) {
         nutri.push(
         <li key={index}>
            {nutritions.totalNutrients[item].label+': '+((Number)(nutritions.totalNutrients[item].quantity)).toFixed(2)+(nutritions.totalNutrients[item].unit)}
@@ -37,9 +39,7 @@ export default function Recipe() {
          
         }
       });
-      
       setNutriItems(nutri);
-      console.log(nutriItems)
     }
   };
   useEffect(() => {
