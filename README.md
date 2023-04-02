@@ -7,7 +7,7 @@ American philosopher Ralph Waldo Emerson once claimed that, "the first wealth is
 Our goal is to help people find the best value for their budget at the grocery store. We accomplish this by searching local grocery store sales for users and leveraging the edamam api to find recipes and nutritional data for these sale items. Together we help users find affordable, healthy meals they can make at home.
 
 <h2>Our Tech Stack</h2>
-For our project, we employed the Next.JS framework for React along with MongoDB.
+For our project, we employed the Next.JS framework for React.
 
 <h2>The Future</h2>
 Flyer API, user accounts to save recipe's, deal rating system to determine how much value the user is getting
