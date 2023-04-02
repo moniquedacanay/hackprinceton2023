@@ -1,4 +1,4 @@
-<h1>Title</h1>
+<h1>Sustain-a-bite</h1>
 
 <h2>Motivation</h1>
 American philosopher Ralph Waldo Emerson once claimed that, "the first wealth is health". A person's health is the key to the rest of their life. Their finances, family, and community are all affected by their health. So why has it become more and more difficult for those in poverty to access healthy food? With rising grocery prices, it has become a struggle to find affordable, healthy meals.
