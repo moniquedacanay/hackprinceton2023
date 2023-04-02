@@ -21,6 +21,13 @@
         "regularPricePerPound": 5.65,
         "percentageDiscount": 0.42,
         "currency" : "USD"  
+    },
+    {
+        "name": "salmon",
+        "currentPricePerPound": 3.25,
+        "regularPricePerPound": 5.65,
+        "percentageDiscount": 0.42,
+        "currency" : "USD" 
     }
     ]
 }
