@@ -55,7 +55,7 @@ export default function Recipe() {
             <div className={styles.textColumn}>
                <div className={styles.board}>
                 <div className={styles.price}>
-                    <div style={{fontSize:"30px"}}>$5</div>
+                    <div style={{fontSize:"30px"}}>$15</div>
                     <div style={{fontSize:"14px"}}>Price</div>
                 </div>
                 <div className={styles.calories}>

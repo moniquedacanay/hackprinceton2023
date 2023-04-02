@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <div ><img src="/logo.png" style={{width:"60px",height:"60px"}}/></div>
-      <div className={styles.name}>Budget Bites</div>
+      <div className={styles.name}>Sustain-a-bite</div>
     </nav>
   );
 };
